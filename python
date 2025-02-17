@@ -1,0 +1,110 @@
+""" Jacob is analyzing two datasets of event IDs where each dataset can include duplicate IDs. He needs to find the unique common event IDs between these two datasets. The solution must handle duplicates in the input tuples and provide the result as a tuple of unique common elements in the order they first appear in the first tuple. 
+
+
+
+Jacob must avoid using built-in functions for handling duplicates and help him display the unique common elements.
+
+Input format :
+The first line consists of an integer n, the size of the first tuple.
+
+The second line contains n space-separated integers, representing the first tuple.
+
+The third line consists of an integer m, the size of the second tuple.
+
+The fourth line contains m space-separated integers, representing the second tuple.
+
+Output format :
+The output displays a tuple containing the unique common elements between the two tuples, in the order they first appear in the first tuple."""
+
+n = int(input().strip())
+tuple1 = tuple(map(int, input().split()))
+m = int(input().strip())
+tuple2 = tuple(map(int, input().split()))
+intersection = ()
+seen = ()
+list1 = list(tuple1)
+list2 = list(tuple2)
+unique_list1 = []
+for item in list1:
+    if item not in unique_list1:
+        unique_list1.append(item)
+for item in unique_list1:
+    if item in list2:
+        if item not in seen:
+            intersection += (item,)
+            seen += (item,)
+print(intersection)
+
+
+
+
+
+""" Michael is working on a secret project where he needs to process a sequence of encrypted numbers. He has a tuple of integers where each number is an encrypted value. To decode them, Michael needs to compute a cumulative XOR for the sequence. 
+
+
+
+Write a program that calculates the cumulative XOR of the integers in the tuple, producing a new tuple where each element represents the XOR of all previous numbers including the current one.
+
+
+
+Example
+
+Input
+
+4
+
+2 3 5 7
+
+Output
+
+(2, 1, 4, 3)
+
+Explanation
+
+Initial Value: Start with XOR value = 0
+
+Process Each Element:
+
+Element 1: 2
+
+0 ^ 2 = 2
+
+Cumulative XOR: 2
+
+Element 2: 3
+
+2 ^ 3 = 1
+
+Cumulative XOR: 2, 1
+
+Element 3: 5
+
+1 ^ 5 = 4
+
+Cumulative XOR: 2, 1, 4
+
+Element 4: 7
+
+4 ^ 7 = 3
+
+Cumulative XOR: 2, 1, 4, 3
+
+Input format :
+The first line of input contains an integer n, representing the number of integers in the tuple.
+
+The second line of input consists of n space-separated integers, representing the sequence of encrypted values.
+
+Output format :
+The output displays a tuple containing the cumulative XOR results, where each element is the XOR of all previous elements including the current one.
+
+"""
+
+# Read the number of elements
+n = int(input())
+input_tuple = tuple(map(int, input().split()))
+cumulative_xor = []
+xor_value = 0
+for num in input_tuple:
+    xor_value ^= num
+    cumulative_xor.append(xor_value)
+print(tuple(cumulative_xor))
